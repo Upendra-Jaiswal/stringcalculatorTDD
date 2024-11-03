@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String Calculator</title>
+    <script src="stringCalculator.js" defer></script>
+    <script>
+      function calculate() {
+        const input = document.getElementById("numbersInput").value;
+        const resultDiv = document.getElementById("result");
+
+        try {
+          const result = add(input); // Call the add function from add.js
+          resultDiv.textContent = "Result: " + result;
+          resultDiv.style.color = "green"; // Change text color to green for success
+        } catch (error) {
+          resultDiv.textContent = error.message;
+          resultDiv.style.color = "red"; // Change text color to red for errors
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      input[type="text"] {
+        width: 300px;
+        padding: 10px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-bottom: 10px;
+        transition: border-color 0.3s;
+      }
+
+      input[type="text"]:focus {
+        border-color: #007bff; /* Blue color when focused */
+        outline: none;
+      }
+
+      button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff; /* Bootstrap blue */
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+      }
+
+      #result {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>String Calculator</h1>
+    <input type="text" id="numbersInput" placeholder="Enter numbers" />
+    <button onclick="calculate()">Calculate</button>
+    <div id="result"></div>
+  </body>
+</html>
